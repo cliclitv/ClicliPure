@@ -1,32 +1,22 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Video } from 'expo-av'
-import VideoPlayer from 'expo-video-player'
+import React from 'react';
+import { View, Text } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <VideoPlayer
-        videoProps={{
-          shouldPlay: true,
-          resizeMode: Video.RESIZE_MODE_CONTAIN,
-          source: {
-            uri: 'https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/3_d97abb65fc36a1d689efd3a105bebce1.mp4'
-          }
-        }}
-        inFullscreen={false}
-        sliderColor='#a10cff'
-        height={337}
-      />
-    </View>
-  )
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+});
+
+export default createAppContainer(AppNavigator);
