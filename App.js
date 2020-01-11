@@ -8,14 +8,12 @@ import Detail from './component/Detail/Detail'
 import Anime from './component/Anime/Anime'
 import Ugc from './component/Ugc/Ugc'
 import Me from './component/Me/Me'
+import { $theme } from './asset/js/const'
 
 const stackProps = {
   headerMode: 'none',
   navigationOptions: {
-    cardStyle: {
-      shadowColor: 'transparent',
-      backgroundColor: 'transparent'
-    }
+    cardStyle: { backgroundColor: 'transparent' }
   }
 }
 const HomeStack = createStackNavigator(
@@ -60,16 +58,15 @@ export default createAppContainer(
             Ugc: 'other',
             Me: 'user'
           }
-          return <Icon name={nameMap[routeName]} size={32} color={tintColor} />
+          return <Icon name={nameMap[routeName]} size={24} color={tintColor} />
         }
       }),
       tabBarOptions: {
         showLabel: false,
-        activeTintColor: '#946ce6',
+        activeTintColor: $theme,
         inactiveTintColor: '#c8cfdd',
         style: {
-          borderTopColor: '#fff',
-          margin: 10
+          borderTopColor: '#fff'
         }
       }
     }
