@@ -1052,6 +1052,15 @@
   resolved "https://registry.npm.taobao.org/@react-native-community/netinfo/download/@react-native-community/netinfo-4.6.0.tgz#fc0b79a226da78371158f885a2f798ff07c926be"
   integrity sha1-/At5oibaeDcRWPiFoveY/wfJJr4=
 
+"@react-navigation/bottom-tabs@^5.0.0-alpha.34":
+  version "5.0.0-alpha.34"
+  resolved "https://registry.npm.taobao.org/@react-navigation/bottom-tabs/download/@react-navigation/bottom-tabs-5.0.0-alpha.34.tgz#cc21f1ba3042fe254f749786d00e5820ed603671"
+  integrity sha1-zCHxujBC/iVPdJeG0A5YIO1gNnE=
+  dependencies:
+    "@react-navigation/routers" "^5.0.0-alpha.22"
+    color "^3.1.2"
+    react-native-iphone-x-helper "^1.2.1"
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.npm.taobao.org/@react-navigation/core/download/@react-navigation/core-3.5.1.tgz?cache=0&sync_timestamp=1578535552110&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40react-navigation%2Fcore%2Fdownload%2F%40react-navigation%2Fcore-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -1062,6 +1071,16 @@
     query-string "^6.4.2"
     react-is "^16.8.6"
 
+"@react-navigation/core@^5.0.0-alpha.32":
+  version "5.0.0-alpha.32"
+  resolved "https://registry.npm.taobao.org/@react-navigation/core/download/@react-navigation/core-5.0.0-alpha.32.tgz#b7c4f68e405080062df95936998be8e44ceb3e2a"
+  integrity sha1-t8T2jkBQgAYt+Vk2mYvo5EzrPio=
+  dependencies:
+    escape-string-regexp "^2.0.0"
+    query-string "^6.9.0"
+    shortid "^2.2.15"
+    use-subscription "^1.3.0"
+
 "@react-navigation/native@^3.6.2":
   version "3.6.2"
   resolved "https://registry.npm.taobao.org/@react-navigation/native/download/@react-navigation/native-3.6.2.tgz?cache=0&sync_timestamp=1578535545800&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40react-navigation%2Fnative%2Fdownload%2F%40react-navigation%2Fnative-3.6.2.tgz#3634697b6350cc5189657ae4551f2d52b57fbbf0"
@@ -1070,6 +1089,14 @@
     hoist-non-react-statics "^3.0.1"
     react-native-safe-area-view "^0.14.1"
     react-native-screens "^1.0.0 || ^1.0.0-alpha"
+
+"@react-navigation/routers@^5.0.0-alpha.22":
+  version "5.0.0-alpha.22"
+  resolved "https://registry.npm.taobao.org/@react-navigation/routers/download/@react-navigation/routers-5.0.0-alpha.22.tgz#db2086012ad9660da95df7b34fcb23b89f4a7429"
+  integrity sha1-2yCGASrZZg2pXfezT8sjuJ9KdCk=
+  dependencies:
+    "@react-navigation/core" "^5.0.0-alpha.32"
+    shortid "^2.2.15"
 
 "@types/fbemitter@^2.0.32":
   version "2.0.32"
@@ -1180,6 +1207,11 @@ accepts@~1.3.5, accepts@~1.3.7:
   dependencies:
     mime-types "~2.1.24"
     negotiator "0.6.2"
+
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npm.taobao.org/add/download/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
 
 ansi-colors@^1.0.1:
   version "1.1.0"
@@ -2235,6 +2267,11 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+escape-string-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
+  integrity sha1-owME6Z2qMuI7L9IPUbq9B8/8o0Q=
 
 esprima@^4.0.0:
   version "4.0.1"
@@ -3923,6 +3960,11 @@ nan@^2.12.1:
   resolved "https://registry.npm.taobao.org/nan/download/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha1-eBj3IgJ7JFmobwKV1DTR/CM2xSw=
 
+nanoid@^2.1.0:
+  version "2.1.9"
+  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-2.1.9.tgz?cache=0&sync_timestamp=1578380607226&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnanoid%2Fdownload%2Fnanoid-2.1.9.tgz#edc71de7b16fc367bbb447c7a638ccebe07a17a1"
+  integrity sha1-7ccd57Fvw2e7tEfHpjjM6+B6F6E=
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.npm.taobao.org/nanomatch/download/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -4456,7 +4498,7 @@ qs@^6.5.0:
   resolved "https://registry.npm.taobao.org/qs/download/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
   integrity sha1-IAgsZct4IjY1qxqerKiHWim/jsk=
 
-query-string@^6.4.2:
+query-string@^6.4.2, query-string@^6.9.0:
   version "6.9.0"
   resolved "https://registry.npm.taobao.org/query-string/download/query-string-6.9.0.tgz#1c3b727c370cf00f177c99f328fda2108f8fa3dd"
   integrity sha1-HDtyfDcM8A8XfJnzKP2iEI+Po90=
@@ -5051,6 +5093,13 @@ shellwords@^0.1.1:
   resolved "https://registry.npm.taobao.org/shellwords/download/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha1-1rkYHBpI05cyTISHHvvPxz/AZUs=
 
+shortid@^2.2.15:
+  version "2.2.15"
+  resolved "https://registry.npm.taobao.org/shortid/download/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"
+  integrity sha1-K5AuqpOmmxESA3PNQqHx/kQ3wSI=
+  dependencies:
+    nanoid "^2.1.0"
+
 side-channel@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/side-channel/download/side-channel-1.0.2.tgz#df5d1abadb4e4bf4af1cd8852bf132d2f7876947"
@@ -5586,6 +5635,13 @@ url-parse@^1.4.4:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
 
+use-subscription@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/use-subscription/download/use-subscription-1.3.0.tgz#3df13a798e826c8d462899423293289a3362e4e6"
+  integrity sha1-PfE6eY6CbI1GKJlCMpMomjNi5OY=
+  dependencies:
+    object-assign "^4.1.1"
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/use/download/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -5869,3 +5925,8 @@ yargs@^9.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+yarn@^1.21.1:
+  version "1.21.1"
+  resolved "https://registry.npm.taobao.org/yarn/download/yarn-1.21.1.tgz#1d5da01a9a03492dc4a5957befc1fd12da83d89c"
+  integrity sha1-HV2gGpoDSS3EpZV778H9EtqD2Jw=
