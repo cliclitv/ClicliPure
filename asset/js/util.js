@@ -11,7 +11,7 @@ export function getAvatar(avatar) {
 
 export function getSuo(content) {
   let m = content.match(/suo(.+?)\)/i)
-  return m ? m[1].slice(2) : 'https://wx4.sinaimg.cn/mw690/0060lm7Tly1fvmtrka9p5j30b40b43yo.jpg'
+  return m ? m[1].slice(2).replace(/\s+/g,"") : 'https://wx4.sinaimg.cn/mw690/0060lm7Tly1fvmtrka9p5j30b40b43yo.jpg'
 }
 
 export function getAv(id) {

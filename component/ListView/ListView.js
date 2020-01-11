@@ -3,10 +3,10 @@ import { Image, FlatList, StyleSheet, Text, View } from 'react-native'
 import { getSuo } from '../../asset/js/util'
 
 export default function ListView(props) {
-  const renderPost = ({ item }) => (
+  const renderPost = ({ item, index }) => (
     <View style={s.wrap}>
       <View style={s.item}>
-        <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' />
+        <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
       </View>
@@ -58,6 +58,8 @@ const s = StyleSheet.create({
   },
   list: {
     backgroundColor: '#fff',
-    marginBottom: 40
+    marginBottom: 40,
+    paddingLeft: 10,
+    paddingRight: 10
   }
 })

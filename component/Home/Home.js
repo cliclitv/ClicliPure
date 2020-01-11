@@ -14,7 +14,7 @@ export default function Home(props) {
   return (
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
-      <Text style={{ paddingLeft: 10, paddingBottom: 10 }}>
+      <Text style={{ paddingLeft: 20, paddingBottom: 10 }}>
         <Text style={s.title}> 推荐 </Text>
         <Text style={s.active}> 最新 </Text>
       </Text>
