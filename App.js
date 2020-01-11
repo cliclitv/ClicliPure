@@ -13,8 +13,14 @@ import { $theme } from './asset/js/const'
 const stackProps = {
   headerMode: 'none',
   navigationOptions: {
-    cardStyle: { backgroundColor: 'transparent' }
-  }
+    cardStyle: { backgroundColor: 'transparent' },
+    headerStyle: {
+      backgroundColor: 'transparent'
+    },
+    headerTransparent: true,
+    gesturesEnabled: false
+  },
+  headerStatusBarHeight: 0
 }
 const HomeStack = createStackNavigator(
   {
