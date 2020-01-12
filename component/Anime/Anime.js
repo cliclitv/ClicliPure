@@ -32,7 +32,7 @@ export default function Home(props) {
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={s.title}> 更新表 </Text>
-      <ListView section={post} />
+      <ListView section={post} push={props.navigation.navigate}/>
     </View>
   )
 }

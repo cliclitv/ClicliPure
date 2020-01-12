@@ -4,27 +4,32 @@ import Player from '../../widget/Player/Player'
 import Icon from '../../widget/Icon/Icon'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
-import { getPostDetail, getVideoList } from '../../asset/js/get'
+import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
 
 export default function Detail(props) {
   const gv = props.navigation.getParam('gv')
   const [post, setPost] = useState(null)
   const [video, setVideo] = useState(null)
   const [content, setContent] = useState(null)
+  const [type, setType] = useState('mp4')
   useEffect(() => {
     getPostDetail(gv).then(res => setPost(res.result))
     getVideoList(gv).then(res => {
-      setContent(res.videos[0].content)
+      select(res.videos[0].content)
       setVideo(res.videos)
     })
   }, [])
-  const select = url => setContent(url)
+  const select = url =>
+    getPlayUrl(url).then(res => {
+      setContent(res.url)
+      setType(res.type)
+    })
   return (
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
         <Icon name={'back'} size={24} color={'#fff'} style={s.back} onPress={() => props.navigation.goBack()} />
-        {content && <Player url={content} />}
+        {content && <Player url={content} type={type} />}
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>
