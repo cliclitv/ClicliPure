@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, StatusBar, StyleSheet, Image, ScrollView } from 'react-native'
+import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import Player from '../../widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
@@ -9,16 +9,23 @@ export default function Detail(props) {
   const gv = props.navigation.getParam('gv')
   const [post, setPost] = useState(null)
   const [video, setVideo] = useState(null)
-  const [content, setContent] = useState(null)
+  const [content, setContent] = useState('')
   useEffect(() => {
     getPostDetail(gv).then(res => setPost(res.result))
-    getVideoList(gv).then(res => setVideo(res.videos))
+    getVideoList(gv).then(res => {
+      setContent(res.videos[0].content)
+      setVideo(res.videos)
+    })
   }, [])
+  const select = url => {
+    console.log(111)
+    setContent(url)
+  }
   return (
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <Player url={'https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/3_d97abb65fc36a1d689efd3a105bebce1.mp4'} />
+        <Player url={content} />
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>
@@ -39,10 +46,10 @@ export default function Detail(props) {
           <View style={s.list}>
             {video &&
               video.map(item => (
-                <View key={item.id} style={s.card}>
+                <TouchableOpacity key={item.id} style={s.card} onPress={() => select(item.content)}>
                   <Text style={s.content}>{item.oid}</Text>
                   <Text style={s.content}>{item.title}</Text>
-                </View>
+                </TouchableOpacity>
               ))}
           </View>
         </ScrollView>
