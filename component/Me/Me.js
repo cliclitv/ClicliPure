@@ -4,7 +4,7 @@ import { Button, Text, View } from 'react-native'
 export default function Me(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Me!</Text>
+      <Text>敬请期待(⊙o⊙)…</Text>
     </View>
   )
 }

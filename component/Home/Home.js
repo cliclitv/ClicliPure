@@ -13,7 +13,7 @@ export default function Home(props) {
   }, [tab])
   return (
     <View style={s.container}>
-      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' animated={true}/>
+      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' animated={true} />
       <Text style={{ paddingLeft: 20, paddingBottom: 10 }}>
         <Text style={tab ? s.active : s.title} onPress={() => setTab(true)}>
           {' '}
@@ -32,7 +32,8 @@ export default function Home(props) {
 export const s = StyleSheet.create({
   container: {
     paddingTop: 30,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    flex: 1
   },
   active: {
     fontSize: 24,
