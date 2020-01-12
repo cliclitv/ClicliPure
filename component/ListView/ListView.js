@@ -1,9 +1,9 @@
 import React from 'react'
-import { Image, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Image, FlatList, StyleSheet, Text, View, SectionList } from 'react-native'
 import { getSuo } from '../../asset/js/util'
 
 export default function ListView(props) {
-  const renderPost = ({ item, index }) => (
+  const renderPost = ({ item }) => (
     <View style={s.wrap}>
       <View style={s.item}>
         <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
@@ -12,9 +12,19 @@ export default function ListView(props) {
       </View>
     </View>
   )
-  return (
+  return props.section ? (
+    <SectionList
+      renderItem={renderPost}
+      sections={props.section}
+      numColumns={2}
+      style={s.list}
+      keyExtractor={item => item.id.toString()}
+      showsVerticalScrollIndicator={false}
+      key={{}}
+    />
+  ) : (
     <FlatList
-      data={props.post}
+      data={props.data}
       renderItem={renderPost}
       numColumns={2}
       style={s.list}

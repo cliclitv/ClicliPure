@@ -13,7 +13,7 @@ export default function Home(props) {
   }, [tab])
   return (
     <View style={s.container}>
-      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
+      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' animated={true}/>
       <Text style={{ paddingLeft: 20, paddingBottom: 10 }}>
         <Text style={tab ? s.active : s.title} onPress={() => setTab(true)}>
           {' '}
@@ -24,7 +24,7 @@ export default function Home(props) {
           最新{' '}
         </Text>
       </Text>
-      <ListView post={post} />
+      <ListView data={post} />
     </View>
   )
 }

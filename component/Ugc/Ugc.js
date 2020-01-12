@@ -13,7 +13,7 @@ export default function Home(props) {
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={s.title}> UGC </Text>
-      <ListView post={post} />
+      <ListView data={post} />
     </View>
   )
 }
