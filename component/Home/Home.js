@@ -5,18 +5,24 @@ import { $theme } from '../../asset/js/const'
 import ListView from '../ListView/ListView'
 
 export default function Home(props) {
+  const [tab, setTab] = useState(true)
   const [post, setPost] = useState([])
   useEffect(() => {
-    getPost('bgm', '', 1, 10).then(res => {
-      setPost(res.posts)
-    })
-  }, [])
+    const p = tab ? getPost('', '推荐', 1, 10) : getPost('bgm', '', 1, 10)
+    p.then(res => setPost(res.posts))
+  }, [tab])
   return (
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={{ paddingLeft: 20, paddingBottom: 10 }}>
-        <Text style={s.title}> 推荐 </Text>
-        <Text style={s.active}> 最新 </Text>
+        <Text style={tab ? s.active : s.title} onPress={() => setTab(true)}>
+          {' '}
+          推荐{' '}
+        </Text>
+        <Text style={tab ? s.title : s.active} onPress={() => setTab(false)}>
+          {' '}
+          最新{' '}
+        </Text>
       </Text>
       <ListView post={post} />
     </View>
