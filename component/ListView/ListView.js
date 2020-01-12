@@ -1,21 +1,29 @@
 import React from 'react'
-import { Image, FlatList, StyleSheet, Text, View, SectionList } from 'react-native'
+import { Image, FlatList, StyleSheet, Text, View, SectionList, TouchableOpacity } from 'react-native'
 import { getSuo } from '../../asset/js/util'
 
 export default function ListView(props) {
+  const push = props.nav.navigate
   const item = ({ item }) => (
     <View style={s.wrap}>
-      <View style={s.item}>
+      <TouchableOpacity
+        style={s.item}
+        onPress={() => {
+          console.log(111)
+          console.log(push)
+          props.nav.navigate('Detail', { gv: item.id })
+        }}
+      >
         <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   )
   const head = ({ section }) => {
     return (
       <View>
-        <Text style={{ textAlign: 'center',lineHeight:60 }}>{section.title}</Text>
+        <Text style={{ textAlign: 'center', lineHeight: 60 }}>{section.title}</Text>
         <FlatList
           data={section.data}
           renderItem={item}

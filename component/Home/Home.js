@@ -24,7 +24,7 @@ export default function Home(props) {
           最新{' '}
         </Text>
       </Text>
-      <ListView data={post} />
+      <ListView data={post} nav={props.navigation} />
     </View>
   )
 }

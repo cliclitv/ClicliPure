@@ -25,7 +25,7 @@ const stackProps = {
 const HomeStack = createStackNavigator(
   {
     Home: { screen: Home },
-    Details: { screen: Detail }
+    Detail: { screen: Detail }
   },
   stackProps
 )
@@ -33,7 +33,7 @@ const HomeStack = createStackNavigator(
 const AnimeStack = createStackNavigator(
   {
     Anime: { screen: Anime },
-    Details: { screen: Detail }
+    Detail: { screen: Detail }
   },
   stackProps
 )
@@ -41,7 +41,7 @@ const AnimeStack = createStackNavigator(
 const UgcStack = createStackNavigator(
   {
     Ugc: { screen: Ugc },
-    Details: { screen: Detail }
+    Detail: { screen: Detail }
   },
   stackProps
 )
