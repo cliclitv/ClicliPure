@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "0.0.1",
+    "version": "0.0.0",
     "orientation": "portrait",
     "icon": "./asset/img/icon.png",
     "splash": {
@@ -25,6 +25,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "tv.clicli.yisar"
     },
     "androidStatusBar": {
       "backgroundColor": "#fff"
