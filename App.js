@@ -60,7 +60,7 @@ export default createAppContainer(
           const { routeName } = navigation.state
           const nameMap = {
             Home: 'home',
-            Anime: 'tv',
+            Anime: 'time',
             Ugc: 'other',
             Me: 'user'
           }
