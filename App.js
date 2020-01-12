@@ -41,7 +41,7 @@ const AnimeStack = createStackNavigator(
 const UgcStack = createStackNavigator(
   {
     Ugc: { screen: Ugc },
-    Detail: { screen: Detail }
+    Detail: { screen: Detail, headerMode: 'screen' }
   },
   stackProps
 )

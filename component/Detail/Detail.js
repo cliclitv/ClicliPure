@@ -9,7 +9,7 @@ export default function Detail(props) {
   const gv = props.navigation.getParam('gv')
   const [post, setPost] = useState(null)
   const [video, setVideo] = useState(null)
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(null)
   useEffect(() => {
     getPostDetail(gv).then(res => setPost(res.result))
     getVideoList(gv).then(res => {
@@ -17,15 +17,12 @@ export default function Detail(props) {
       setVideo(res.videos)
     })
   }, [])
-  const select = url => {
-    console.log(111)
-    setContent(url)
-  }
+  const select = url => setContent(url)
   return (
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <Player url={content} />
+        {content && <Player url={content} />}
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>
