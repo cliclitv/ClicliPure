@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ClicliPure",
-    "slug": "ClicliPure",
+    "name": "clicli",
+    "slug": "clicli",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
