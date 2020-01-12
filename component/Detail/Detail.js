@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import Player from '../../widget/Player/Player'
+import Icon from '../../widget/Icon/Icon'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList } from '../../asset/js/get'
@@ -22,6 +23,7 @@ export default function Detail(props) {
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
+        <Icon name={'back'} size={24} color={'#fff'} style={s.back} onPress={() => props.navigation.goBack()} />
         {content && <Player url={content} />}
         <View style={s.tab}>
           <View style={s.item}>
@@ -122,5 +124,11 @@ const s = StyleSheet.create({
   },
   list: {
     margin: 20
+  },
+  back: {
+    position: 'absolute',
+    top: 20,
+    zIndex: 999,
+    left: 20
   }
 })
