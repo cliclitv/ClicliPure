@@ -2,18 +2,10 @@ import React from 'react'
 import { Image, FlatList, StyleSheet, Text, View, SectionList, TouchableOpacity } from 'react-native'
 import { getSuo } from '../../asset/js/util'
 
-export default function ListView(props) {
-  const push = props.nav.navigate
+export default function ListView({ data, section, push }) {
   const item = ({ item }) => (
     <View style={s.wrap}>
-      <TouchableOpacity
-        style={s.item}
-        onPress={() => {
-          console.log(111)
-          console.log(push)
-          props.nav.navigate('Detail', { gv: item.id })
-        }}
-      >
+      <TouchableOpacity style={s.item} onPress={() => push('Detail', { gv: item.id })}>
         <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
@@ -37,18 +29,18 @@ export default function ListView(props) {
     )
   }
 
-  return props.section ? (
+  return section ? (
     <SectionList
       renderItem={() => null}
       renderSectionHeader={head}
-      sections={props.section}
+      sections={section}
       keyExtractor={item => item.id.toString()}
       showsVerticalScrollIndicator={false}
       key={{}}
     />
   ) : (
     <FlatList
-      data={props.data}
+      data={data}
       renderItem={item}
       numColumns={2}
       style={s.list}
