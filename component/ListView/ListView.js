@@ -6,7 +6,7 @@ export default function ListView({ data, section, push }) {
   const item = ({ item }) => (
     <View style={s.wrap}>
       <TouchableOpacity style={s.item} onPress={() => push('Detail', { gv: item.id })}>
-        <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
+        <Image source={{ uri: getSuo(item.content) }} style={s.cover}/>
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
       </TouchableOpacity>
@@ -57,8 +57,6 @@ const s = StyleSheet.create({
   },
   item: {
     shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
     borderRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
