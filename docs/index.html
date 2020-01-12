@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>clicli纯白-APP发布页-c站APP</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      html {
+        height: 100%;
+        background: #f4f6fa;
+      }
+      body {
+        transition: 1s;
+        height: 100%;
+        background: url(https://pic.superbed.cn/item/5cc52fce3a213b041729af94.png);
+      }
+      .main {
+        width: 900px;
+        margin: 0 auto;
+        display: flex;
+      }
+      .left {
+        width: 200px;
+        transition: 0.5s;
+      }
+
+      .right {
+        width: 360px;
+        background: url(https://ae01.alicdn.com/kf/H6e0e6222f3e64d77812c9223f36dfa4ez.png) no-repeat left;
+        height: 100vh;
+        background-size: 100%;
+        margin-right: 100px;
+      }
+      .logo {
+        height: 100px;
+        width: 100px;
+        border-radius: 20px;
+        background: url(http://ww1.sinaimg.cn/large/0065Zy9ely1gatw2cpvxwj30sg0sg0t9.jpg);
+        background-size: cover;
+        margin: 80px auto 30px;
+      }
+      h1 {
+        color: #7e5fd9;
+        text-align: center;
+        font-size: 16px;
+        letter-spacing: 4px;
+        margin-top: 50px;
+      }
+      .link {
+        margin-top: 50px;
+      }
+      .link a {
+        display: block;
+        text-align: center;
+        color: #7e5fd9;
+        text-decoration: none;
+      }
+      .link li {
+        text-align: center;
+        width: 180px;
+        padding: 15px;
+        background: rgba(148, 108, 230, 0.2);
+        display: inline-block;
+        margin: 20px auto;
+        border-radius: 4px;
+        transition: 0.5s;
+      }
+
+      .link li:hover {
+        background: #7e5fd9;
+        color: #fff;
+      }
+
+      .old {
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: 500px) {
+        .main,
+        .left {
+          width: 100%;
+        }
+        .right {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="right"></div>
+      <div class="left">
+        <div class="logo"></div>
+        <h1>人·生·就·是·佛</h1>
+        <ul class="link">
+          <a href="https://expo.io/artifacts/039c687f-cc22-4b17-9bb0-6b4c760cc2fd" target="_blank">
+            <li>clicli 纯白下载</li>
+          </a>
+          <a href="https://cdn.jsdelivr.net/gh/cliclitv/clicli-hybrid-app@master/bin/clicli.apk" target="_blank" class="old">
+            历史版本下载
+          </a>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
