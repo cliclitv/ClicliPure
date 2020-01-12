@@ -29,7 +29,7 @@ export default function Home(props) {
   )
 }
 
-const s = StyleSheet.create({
+export const s = StyleSheet.create({
   container: {
     paddingTop: 30,
     backgroundColor: '#fff'

@@ -1,11 +1,32 @@
-import React from 'react'
-import { Button, Text, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { Text, View, StyleSheet, StatusBar } from 'react-native'
+import { getPost } from '../../asset/js/get'
+import { $theme } from '../../asset/js/const'
+import ListView from '../ListView/ListView'
 
-export default function Ugc(props) {
+export default function Home(props) {
+  const [post, setPost] = useState([])
+  useEffect(() => {
+    getPost('原创', '', 1, 10).then(res => setPost(res.posts))
+  }, [])
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Ugc!</Text>
-      <Button title='Go to Details' onPress={() => props.navigation.navigate('Details')} />
+    <View style={s.container}>
+      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
+      <Text style={s.title}> UGC </Text>
+      <ListView post={post} />
     </View>
   )
 }
+
+const s = StyleSheet.create({
+  container: {
+    paddingTop: 30,
+    backgroundColor: '#fff'
+  },
+  title: {
+    fontSize: 24,
+    color: $theme,
+    paddingLeft: 20,
+    paddingBottom: 10
+  }
+})
