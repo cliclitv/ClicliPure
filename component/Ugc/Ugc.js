@@ -21,7 +21,8 @@ export default function Home(props) {
 const s = StyleSheet.create({
   container: {
     paddingTop: 30,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    flex: 1
   },
   title: {
     fontSize: 24,

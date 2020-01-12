@@ -3,7 +3,7 @@ import { Image, FlatList, StyleSheet, Text, View, SectionList } from 'react-nati
 import { getSuo } from '../../asset/js/util'
 
 export default function ListView(props) {
-  const renderPost = ({ item }) => (
+  const item = ({ item }) => (
     <View style={s.wrap}>
       <View style={s.item}>
         <Image source={{ uri: getSuo(item.content) }} style={s.cover} resizeMode='cover' resizeMethod='auto' />
@@ -12,12 +12,28 @@ export default function ListView(props) {
       </View>
     </View>
   )
+  const head = ({ section }) => {
+    return (
+      <View>
+        <Text style={{ textAlign: 'center',lineHeight:60 }}>{section.title}</Text>
+        <FlatList
+          data={section.data}
+          renderItem={item}
+          numColumns={2}
+          style={s.list}
+          keyExtractor={item => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          key={{}}
+        />
+      </View>
+    )
+  }
+
   return props.section ? (
     <SectionList
-      renderItem={renderPost}
+      renderItem={() => null}
+      renderSectionHeader={head}
       sections={props.section}
-      numColumns={2}
-      style={s.list}
       keyExtractor={item => item.id.toString()}
       showsVerticalScrollIndicator={false}
       key={{}}
@@ -25,7 +41,7 @@ export default function ListView(props) {
   ) : (
     <FlatList
       data={props.data}
-      renderItem={renderPost}
+      renderItem={item}
       numColumns={2}
       style={s.list}
       keyExtractor={item => item.id.toString()}

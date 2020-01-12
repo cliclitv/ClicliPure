@@ -16,7 +16,7 @@ export default function Home(props) {
     6: '周六'
   }
   useEffect(() => {
-    getPost('新番', '', 1, 10).then(res => {
+    getPost('新番', '', 1, 100).then(res => {
       let ret = []
       for (const k in map) ret.push({ title: map[k], data: [] })
       res.posts.forEach(item => {
@@ -31,8 +31,8 @@ export default function Home(props) {
   return (
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
-      <Text style={s.title}> UGC </Text>
-      <ListView sections={post} />
+      <Text style={s.title}> 更新表 </Text>
+      <ListView section={post} />
     </View>
   )
 }
@@ -40,12 +40,12 @@ export default function Home(props) {
 const s = StyleSheet.create({
   container: {
     paddingTop: 30,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    flex: 1
   },
   title: {
     fontSize: 24,
     color: $theme,
-    paddingLeft: 20,
-    paddingBottom: 10
+    paddingLeft: 20
   }
 })
