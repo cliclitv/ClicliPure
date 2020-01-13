@@ -88,7 +88,7 @@ const s = StyleSheet.create({
   },
   info: {
     marginTop: 45,
-    height: 480
+    height: 530
   },
   title: {
     padding: 20,
