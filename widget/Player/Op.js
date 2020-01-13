@@ -23,9 +23,17 @@ export default function Player({ source, themeColor, callback }) {
     }
     setFull(!isFull)
   }
+  const back = () => {
+    if (isFull) {
+      callback.back && callback.back()
+    } else {
+      full()
+    }
+    setFull(!isFull)
+  }
   return (
     <TouchableOpacity style={isFull ? s.full : s.unfull}>
-      <Icon name={'back'} size={20} color={'#fff'} onPress={full} style={s.back} />
+      <Icon name={'back'} size={20} color={'#fff'} onPress={back} style={s.back} />
       <View style={s.control}>
         <Icon name={isPlay ? 'pause' : 'play'} size={20} color={'#fff'} onPress={play} />
         <Slider
