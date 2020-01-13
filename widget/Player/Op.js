@@ -1,48 +1,56 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight } from 'react-native'
 import { Video } from 'expo-av'
 import { ScreenOrientation } from 'expo'
 import Icon from './Icon'
 
-const { width, height } = Dimensions.get('window')
-const autoHeight = (width * 9) / 16
-let timer = null
+export const { width, height } = Dimensions.get('window')
+export const autoHeight = (width * 9) / 16
 
-export default function Player({ source, themeColor = '#946ce6', callback }) {
-  const v = useRef(null)
+export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', callback }) {
+  let v = useRef(null)
+  let timer = null
   const [isPlay, setPlay] = useState(true)
   const [isFull, setFull] = useState(false)
   const [control, setControl] = useState(false)
   const [duration, setDuration] = useState(0)
   const [position, setPosition] = useState(0)
-  const play = () => {
+
+  useEffect(() => {
+    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(res => v.current.playAsync())
+    return () => v.current.unloadAsync()
+  }, [url])
+  
+  const play = useCallback(() => {
     isPlay ? v.current.pauseAsync() : v.current.playAsync()
     setPlay(!isPlay)
-  }
-  const full = () => {
+  })
+  const full = useCallback(() => {
     isFull
       ? ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
       : ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT)
     setFull(!isFull)
-  }
-  const back = () => (isFull ? full() : callback.back && callback.back())
+  })
+  const back = useCallback(() => (isFull ? full() : callback.back && callback.back()))
 
-  const update = status => {
+  const update = useCallback(status => {
     setDuration(status.durationMillis)
     setPosition(status.positionMillis)
-  }
+  })
 
-  const value = value => {
+  const value = useCallback(value => {
     v.current.setPositionAsync(value * duration)
     v.current.playAsync()
-  }
-  const show = () => {
+  })
+  const show = useCallback(() => {
     setControl(true)
     clearTimeout(timer)
     timer = setTimeout(() => setControl(false), 5000)
-  }
+  })
 
-  const c = control ? { opacity: 1 } : { opacity: 0 }
+  const c = useMemo(() => {
+    return control ? { opacity: 1 } : { opacity: 0 }
+  })
   return (
     <TouchableHighlight onPress={show}>
       <View style={isFull ? s.full : s.unfull}>
@@ -64,19 +72,7 @@ export default function Player({ source, themeColor = '#946ce6', callback }) {
           <Text style={s.text}>{timefy(duration)}</Text>
           <Icon name={'full'} size={20} color={'#fff'} onPress={full} style={s.icon} />
         </View>
-
-        <Video
-          source={source || {}}
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode='cover'
-          shouldPlay
-          isLooping
-          style={s.video}
-          ref={v}
-          onPlaybackStatusUpdate={update}
-        />
+        <Video rate={1.0} volume={1.0} isMuted={false} resizeMode='cover' shouldPlay style={s.video} ref={v} onPlaybackStatusUpdate={update} />
       </View>
     </TouchableHighlight>
   )

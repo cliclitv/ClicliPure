@@ -4,6 +4,7 @@ import Player from '../../widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
+import { width, autoHeight as height } from '../../widget/Player/Op'
 
 export default function Detail(props) {
   const gv = props.navigation.getParam('gv')
@@ -18,16 +19,19 @@ export default function Detail(props) {
       setVideo(res.videos)
     })
   }, [])
-  const select = url =>
+  const select = url => {
     getPlayUrl(url).then(res => {
       setContent(res.url)
       setType(res.type)
     })
+  }
   return (
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <View style={{ backgroundColor: '#000' }}>{content && <Player url={content} type={type} back={props.navigation.goBack}/>}</View>
+        <View style={{ backgroundColor: '#000', width, height }}>
+          {content && <Player url={content} type={type} back={props.navigation.goBack} />}
+        </View>
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>
