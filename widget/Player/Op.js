@@ -11,13 +11,15 @@ export default function Player({ source, themeColor, callback }) {
   const v = useRef(null)
   const [isPlay, setPlay] = useState(true)
   const [isFull, setFull] = useState(false)
+  const [duration, setDuration] = useState(0)
+  const [position, setPosition] = useState(0)
   const play = () => {
     isPlay ? v.current.pauseAsync() : v.current.playAsync()
     setPlay(!isPlay)
   }
-  const full = async () => {
+  const full = () => {
     if (isFull) {
-      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     } else {
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT)
     }
@@ -31,11 +33,19 @@ export default function Player({ source, themeColor, callback }) {
     }
     setFull(!isFull)
   }
+  const update = ({ positionMillis, durationMillis }) => {
+    setDuration(durationMillis)
+    setPosition(positionMillis)
+  }
+  useEffect(() => {
+    update()
+  }, [])
   return (
     <TouchableOpacity style={isFull ? s.full : s.unfull}>
       <Icon name={'back'} size={20} color={'#fff'} onPress={back} style={s.back} />
       <View style={s.control}>
         <Icon name={isPlay ? 'pause' : 'play'} size={20} color={'#fff'} onPress={play} />
+        <Text>{timefy(position)}</Text>
         <Slider
           style={{ height: 40, flex: 1 }}
           minimumValue={0}
@@ -44,11 +54,30 @@ export default function Player({ source, themeColor, callback }) {
           maximumTrackTintColor='rgba(255,255,255,0.5)'
           thumbTintColor={themeColor}
         />
+        <Text>{timefy(duration)}</Text>
         <Icon name={'full'} size={20} color={'#fff'} onPress={full} />
       </View>
-      <Video source={source || {}} rate={1.0} volume={1.0} isMuted={false} resizeMode='cover' shouldPlay isLooping style={s.wrap} ref={v} />
+      <Video
+        source={source || {}}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        resizeMode='cover'
+        shouldPlay
+        isLooping
+        style={s.wrap}
+        ref={v}
+        onPlaybackStatusUpdate={update}
+      />
     </TouchableOpacity>
   )
+}
+
+const timefy = millis => {
+  const totalSeconds = millis / 1000
+  const seconds = String(Math.floor(totalSeconds % 60))
+  const minutes = String(Math.floor(totalSeconds / 60))
+  return minutes.padStart(2, '0') + ':' + seconds.padStart(2, '0')
 }
 
 const s = StyleSheet.create({
