@@ -9,7 +9,7 @@ const autoHeight = (width * 9) / 16
 
 export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', callback }) {
   if (!url) return <View style={s.unfull} />
-  
+
   let v = useRef(null)
   let timer = null
   const [isPlay, setPlay] = useState(true)
