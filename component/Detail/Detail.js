@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native'
+import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import Player from '../../widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
@@ -23,14 +23,11 @@ export default function Detail(props) {
       setContent(res.url)
       setType(res.type)
     })
-  const { width } = Dimensions.get('window')
-  const height = (width * 9) / 16
   return (
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        {/* <Icon name={'back'} size={24} color={'#fff'} style={s.back} onPress={() => props.navigation.goBack()} /> */}
-        <View style={{ height, width, backgroundColor: '#000' }}>{content && <Player url={content} type={type} />}</View>
+        <View style={{ backgroundColor: '#000' }}>{content && <Player url={content} type={type} />}</View>
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>

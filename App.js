@@ -22,7 +22,7 @@ const stackProps = {
   },
   headerStatusBarHeight: 0
 }
-const HomeStack = createStackNavigator(
+const Home = createStackNavigator(
   {
     Home: { screen: Home },
     Detail: { screen: Detail }
@@ -30,7 +30,7 @@ const HomeStack = createStackNavigator(
   stackProps
 )
 
-const AnimeStack = createStackNavigator(
+const Anime = createStackNavigator(
   {
     Anime: { screen: Anime },
     Detail: { screen: Detail }
@@ -38,7 +38,7 @@ const AnimeStack = createStackNavigator(
   stackProps
 )
 
-const UgcStack = createStackNavigator(
+const Ugc = createStackNavigator(
   {
     Ugc: { screen: Ugc },
     Detail: { screen: Detail, headerMode: 'screen' }
@@ -49,9 +49,9 @@ const UgcStack = createStackNavigator(
 export default createAppContainer(
   createBottomTabNavigator(
     {
-      Home: { screen: HomeStack },
-      Anime: { screen: AnimeStack },
-      Ugc: { screen: UgcStack },
+      Home: { screen: Home },
+      Anime: { screen: Anime },
+      Ugc: { screen: Ugc },
       Me: { screen: Me }
     },
     {
