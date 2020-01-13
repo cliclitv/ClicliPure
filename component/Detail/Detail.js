@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native'
 import Player from '../../widget/Player/Player'
-import Icon from '../../widget/Icon/Icon'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
@@ -30,7 +29,7 @@ export default function Detail(props) {
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <Icon name={'back'} size={24} color={'#fff'} style={s.back} onPress={() => props.navigation.goBack()} />
+        {/* <Icon name={'back'} size={24} color={'#fff'} style={s.back} onPress={() => props.navigation.goBack()} /> */}
         <View style={{ height, width, backgroundColor: '#000' }}>{content && <Player url={content} type={type} />}</View>
         <View style={s.tab}>
           <View style={s.item}>
@@ -51,12 +50,12 @@ export default function Detail(props) {
           </View>
           <View style={s.list}>
             {video &&
-              video.map(item => (
-                <TouchableOpacity key={item.id} style={s.card} onPress={() => select(item.content)}>
+              video.map(item => {
+                return <TouchableOpacity key={item.id} style={content === item.content ? s.current : s.card} onPress={() => select(item.content)}>
                   <Text style={s.content}>{item.oid}</Text>
                   <Text style={s.content}>{item.title}</Text>
                 </TouchableOpacity>
-              ))}
+              })}
           </View>
         </ScrollView>
       </View>
@@ -120,6 +119,14 @@ const s = StyleSheet.create({
   card: {
     padding: 10,
     backgroundColor: 'rgba(148,108,230,.1)',
+    margin: 5,
+    borderRadius: 5,
+    flex: 1,
+    flexDirection: 'row'
+  },
+  current: {
+    padding: 10,
+    backgroundColor: 'rgba(148,108,230,.2)',
     margin: 5,
     borderRadius: 5,
     flex: 1,
