@@ -29,7 +29,7 @@ export default function Detail(props) {
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
         <View style={{ backgroundColor: '#000' }}>
-          <Player url={content} type={type} back={props.navigation.goBack} full={full} />
+          <Player url={content} type={type} back={props.navigation.goBack}/>
         </View>
         <View style={s.tab}>
           <View style={s.item}>
