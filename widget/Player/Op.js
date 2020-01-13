@@ -25,9 +25,9 @@ export default function Player({ source, themeColor, callback }) {
   }
   const back = () => {
     if (isFull) {
-      callback.back && callback.back()
-    } else {
       full()
+    } else {
+      callback.back && callback.back()
     }
     setFull(!isFull)
   }
@@ -46,7 +46,7 @@ export default function Player({ source, themeColor, callback }) {
         />
         <Icon name={'full'} size={20} color={'#fff'} onPress={full} />
       </View>
-      <Video source={source} rate={1.0} volume={1.0} isMuted={false} resizeMode='cover' shouldPlay isLooping style={s.wrap} ref={v} />
+      <Video source={source || {}} rate={1.0} volume={1.0} isMuted={false} resizeMode='cover' shouldPlay isLooping style={s.wrap} ref={v} />
     </TouchableOpacity>
   )
 }

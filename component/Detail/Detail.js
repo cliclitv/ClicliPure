@@ -27,7 +27,7 @@ export default function Detail(props) {
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <View style={{ backgroundColor: '#000' }}>{content && <Player url={content} type={type} />}</View>
+        <View style={{ backgroundColor: '#000' }}>{content && <Player url={content} type={type} back={props.navigation.goBack}/>}</View>
         <View style={s.tab}>
           <View style={s.item}>
             <Text style={s.active}>简介</Text>
@@ -48,10 +48,12 @@ export default function Detail(props) {
           <View style={s.list}>
             {video &&
               video.map(item => {
-                return <TouchableOpacity key={item.id} style={content === item.content ? s.current : s.card} onPress={() => select(item.content)}>
-                  <Text style={s.content}>{item.oid}</Text>
-                  <Text style={s.content}>{item.title}</Text>
-                </TouchableOpacity>
+                return (
+                  <TouchableOpacity key={item.id} style={content === item.content ? s.current : s.card} onPress={() => select(item.content)}>
+                    <Text style={s.content}>{item.oid}</Text>
+                    <Text style={s.content}>{item.title}</Text>
+                  </TouchableOpacity>
+                )
               })}
           </View>
         </ScrollView>
