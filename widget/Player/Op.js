@@ -17,10 +17,13 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
   const [position, setPosition] = useState(0)
 
   useEffect(() => {
-    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(res => v.current.playAsync())
+    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(res => {
+      v.current.playAsync()
+      setPlay(true)
+    })
     return () => v.current.unloadAsync()
   }, [url])
-  
+
   const play = useCallback(() => {
     isPlay ? v.current.pauseAsync() : v.current.playAsync()
     setPlay(!isPlay)
@@ -79,6 +82,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
 }
 
 const timefy = millis => {
+  if (!millis) return '00:00'
   const t = millis / 1000
   const s = String(Math.floor(t % 60))
   const m = String(Math.floor(t / 60))
