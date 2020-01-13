@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native'
 import Player from '../../widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
-import { width, autoHeight as height } from '../../widget/Player/Op'
 
 export default function Detail(props) {
   const gv = props.navigation.getParam('gv')
@@ -29,8 +28,8 @@ export default function Detail(props) {
     post && (
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
-        <View style={{ backgroundColor: '#000', width, height }}>
-          {content && <Player url={content} type={type} back={props.navigation.goBack} />}
+        <View style={{ backgroundColor: '#000' }}>
+          <Player url={content} type={type} back={props.navigation.goBack} full={full} />
         </View>
         <View style={s.tab}>
           <View style={s.item}>

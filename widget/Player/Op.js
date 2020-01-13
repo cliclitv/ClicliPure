@@ -4,10 +4,12 @@ import { Video } from 'expo-av'
 import { ScreenOrientation } from 'expo'
 import Icon from './Icon'
 
-export const { width, height } = Dimensions.get('window')
-export const autoHeight = (width * 9) / 16
+const { width, height } = Dimensions.get('window')
+const autoHeight = (width * 9) / 16
 
 export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', callback }) {
+  if (!url) return <View style={s.unfull} />
+  
   let v = useRef(null)
   let timer = null
   const [isPlay, setPlay] = useState(true)
@@ -17,7 +19,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
   const [position, setPosition] = useState(0)
 
   useEffect(() => {
-    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(res => {
+    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(() => {
       v.current.playAsync()
       setPlay(true)
     })
@@ -29,9 +31,12 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
     setPlay(!isPlay)
   })
   const full = useCallback(() => {
-    isFull
-      ? ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
-      : ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT)
+    if (isFull) {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+    } else {
+      callback.full && callback.full()
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT)
+    }
     setFull(!isFull)
   })
   const back = useCallback(() => (isFull ? full() : callback.back && callback.back()))
@@ -75,7 +80,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
           <Text style={s.text}>{timefy(duration)}</Text>
           <Icon name={'full'} size={20} color={'#fff'} onPress={full} style={s.icon} />
         </View>
-        <Video rate={1.0} volume={1.0} isMuted={false} resizeMode='cover' shouldPlay style={s.video} ref={v} onPlaybackStatusUpdate={update} />
+        <Video rate={1.0} volume={1.0} isMuted={false} resizeMode='contain' shouldPlay style={s.video} ref={v} onPlaybackStatusUpdate={update} />
       </View>
     </TouchableHighlight>
   )
@@ -100,7 +105,7 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 9,
+    zIndex: 9999,
     bottom: 10
   },
   full: {
