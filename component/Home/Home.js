@@ -48,7 +48,7 @@ export const s = StyleSheet.create({
   },
   search: {
     position: 'absolute',
-    right: 20,
+    right: 25,
     top: 35
   }
 })

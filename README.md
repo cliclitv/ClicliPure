@@ -28,3 +28,17 @@ yarn start
 ```
 
 3. 在 expo 面板中点击 run in android 即可
+
+do
+
+- [x] 最新
+- [x] 推荐
+- [x] 更新表
+- [x] UGC
+- [x] 搜索
+- [x] 播放页
+
+toto
+
+- [ ] 个人中心
+- [ ] 登陆注册
