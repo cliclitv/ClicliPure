@@ -8,7 +8,8 @@ import Detail from './component/Detail/Detail'
 import Anime from './component/Anime/Anime'
 import Ugc from './component/Ugc/Ugc'
 import Search from './component/Search/Search'
-import Me from './component/Me/Me'
+import Mine from './component/Mine/Mine'
+import Login from './component/Login/Login'
 import { $theme } from './asset/js/const'
 
 const stackProps = {
@@ -49,8 +50,9 @@ const HomeStack = createStackNavigator(
   stackProps
 )
 
-const MeStack = createStackNavigator(
+const MineStack = createStackNavigator(
   {
+    Mine: { screen: Mine },
     Login: { screen: Login }
   },
   stackProps
@@ -62,7 +64,7 @@ export default createAppContainer(
       Home: { screen: HomeStack },
       Anime: { screen: AnimeStack },
       Ugc: { screen: UgcStack },
-      Me: { screen: MeStack }
+      Me: { screen: MineStack }
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -107,7 +109,7 @@ AnimeStack.navigationOptions = ({ navigation }) => {
   return { tabBarVisible }
 }
 
-MeStack.navigationOptions = ({ navigation }) => {
+MineStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   if (navigation.state.index > 0) tabBarVisible = false
   return { tabBarVisible }
