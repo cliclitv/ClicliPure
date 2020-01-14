@@ -22,19 +22,6 @@ const stackProps = {
   },
   headerStatusBarHeight: 0
 }
-const HomeStack = createStackNavigator(
-  {
-    Home: { screen: Home },
-    Detail: { screen: Detail }
-  },
-  stackProps
-)
-
-HomeStack.navigationOptions = ({ navigation }) => {
-  let tabBarVisible = true
-  if (navigation.state.index > 0) tabBarVisible = false
-  return { tabBarVisible }
-}
 
 const AnimeStack = createStackNavigator(
   {
@@ -51,6 +38,33 @@ const UgcStack = createStackNavigator(
   },
   stackProps
 )
+
+
+const HomeStack = createStackNavigator(
+  {
+    Home: { screen: Home },
+    Detail: { screen: Detail }
+  },
+  stackProps
+)
+
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
+
+UgcStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
+
+AnimeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
 
 export default createAppContainer(
   createBottomTabNavigator(

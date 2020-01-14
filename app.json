@@ -4,25 +4,19 @@
     "slug": "clicli",
     "privacy": "public",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./asset/img/icon.png",
     "splash": {
       "image": "./asset/img/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "native",
       "backgroundColor": "#946ce6"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

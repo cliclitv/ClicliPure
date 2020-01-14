@@ -3,7 +3,6 @@ import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight } from '
 import { Video } from 'expo-av'
 import { ScreenOrientation } from 'expo'
 import Icon from './Icon'
-
 const { width, height } = Dimensions.get('window')
 const autoHeight = (width * 9) / 16
 
@@ -19,7 +18,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
   const [position, setPosition] = useState(0)
 
   useEffect(() => {
-    v.current.loadAsync({ uri: url, overrideFileExtensionAndroid: type }).then(() => {
+    v.current.loadAsync({ uri: url }).then(() => {
       v.current.playAsync()
       setPlay(true)
     })
@@ -80,7 +79,16 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
           <Text style={s.text}>{timefy(duration)}</Text>
           <Icon name={'full'} size={20} color={'#fff'} onPress={full} style={s.icon} />
         </View>
-        <Video rate={1.0} volume={1.0} isMuted={false} resizeMode='contain' shouldPlay style={s.video} ref={v} onPlaybackStatusUpdate={update} />
+        <Video
+          rate={1.0}
+          volume={1.0}
+          isMuted={false}
+          resizeMode='contain'
+          shouldPlay
+          style={s.video}
+          ref={v}
+          onPlaybackStatusUpdate={update}
+        />
       </View>
     </TouchableHighlight>
   )
