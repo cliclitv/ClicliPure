@@ -12,7 +12,7 @@ export default function Mine(props) {
   ]
   return (
     <View style={s.container}>
-      <TouchableOpacity style={s.head}>
+      <TouchableOpacity style={s.head} onPress={() => props.navigation.navigate('Login')}>
         <Image source={{ uri: img }} style={s.avatar} />
         <Text style={s.name}>登录</Text>
       </TouchableOpacity>
@@ -60,7 +60,7 @@ const s = StyleSheet.create({
   left: {
     color: '#555',
     flex: 1,
-    paddingLeft: 10,
+    paddingLeft: 10
   },
   right: {
     color: '#888',

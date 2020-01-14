@@ -64,7 +64,7 @@ export default createAppContainer(
       Home: { screen: HomeStack },
       Anime: { screen: AnimeStack },
       Ugc: { screen: UgcStack },
-      Me: { screen: MineStack }
+      Mine: { screen: MineStack }
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -74,7 +74,7 @@ export default createAppContainer(
             Home: 'home',
             Anime: 'time',
             Ugc: 'other',
-            Me: 'user'
+            Mine: 'user'
           }
           return <Icon name={nameMap[routeName]} size={24} color={tintColor} />
         }
