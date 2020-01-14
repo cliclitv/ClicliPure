@@ -1,12 +1,16 @@
 import React from 'react'
-import { Image, FlatList, StyleSheet, Text, View, SectionList, TouchableOpacity } from 'react-native'
+import { Image, FlatList, StyleSheet, Text, View, SectionList, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { getSuo } from '../../asset/js/util'
+import { $theme } from '../../asset/js/const'
 
-export default function ListView({ data, section, push }) {
+export default function ListView({ data, section, push, end }) {
+  const loading = <ActivityIndicator color={$theme} size={30} style={{ margin: 20 }}></ActivityIndicator>
+
+  if (!data && !section) return loading
   const item = ({ item }) => (
     <View style={s.wrap}>
       <TouchableOpacity style={s.item} onPress={() => push('Detail', { gv: item.id })}>
-        <Image source={{ uri: getSuo(item.content) }} style={s.cover}/>
+        <Image source={{ uri: getSuo(item.content) }} style={s.cover} />
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
       </TouchableOpacity>
@@ -47,6 +51,9 @@ export default function ListView({ data, section, push }) {
       keyExtractor={item => item.id.toString()}
       showsVerticalScrollIndicator={false}
       key={{}}
+      onEndReachedThreshold={1}
+      onEndReached={end}
+      ListFooterComponent={() => loading}
     />
   )
 }
