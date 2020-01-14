@@ -15,14 +15,20 @@ export default function Mine(props) {
     ['版本更新', 'v0.0.1']
   ]
   useEffect(() => {
+    navigation.addListener('focus', () => alert('Screen was focused'))
+    // props.navigation.addListener('focus', () => {
+    //   login()
+    // })
+  })
+  function login() {
     AsyncStorage.getItem('user').then(res => {
       if (res) {
-        const user = JSON.parse(res)
-        setName(user.name)
-        setAvatar(user.qq)
+        const { name, qq } = JSON.parse(res)
+        setName(name)
+        setAvatar(qq)
       }
     })
-  }, [])
+  }
   function logout() {
     AsyncStorage.removeItem('user').then(() => {
       setName('')
