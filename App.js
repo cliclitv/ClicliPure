@@ -171,7 +171,8 @@ export default function App() {
           activeTintColor: $theme,
           inactiveTintColor: '#c8cfdd',
           style: {
-            borderTopColor: '#fff'
+            borderTopColor: '#fff',
+            elevation: 0
           }
         }}
       >
