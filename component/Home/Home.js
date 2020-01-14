@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, StatusBar } from 'react-native'
 import { getPost } from '../../asset/js/get'
 import { $theme } from '../../asset/js/const'
 import ListView from '../ListView/ListView'
+import Icon from '../../widget/Icon/Icon'
 
 export default function Home(props) {
   const [tab, setTab] = useState(true)
@@ -24,6 +25,7 @@ export default function Home(props) {
           最新{' '}
         </Text>
       </Text>
+      <Icon name={'search'} size={24} color={$theme} style={s.search} onPress={() => props.navigation.navigate('Search')} />
       <ListView data={post} push={props.navigation.navigate} />
     </View>
   )
@@ -43,5 +45,10 @@ export const s = StyleSheet.create({
   title: {
     fontSize: 18,
     paddingLeft: 20
+  },
+  search: {
+    position: 'absolute',
+    right: 20,
+    top: 35
   }
 })

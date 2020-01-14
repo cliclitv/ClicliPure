@@ -1,7 +1,7 @@
 {
-    "symbol_url": "//at.alicdn.com/t/font_1609526_q0x7r2v9qzm.js",
+    "symbol_url": "//at.alicdn.com/t/font_648016_q3joytqtzlh.js",
     "use_typescript": false,
-    "save_dir": "./widget/Player/Icon",
+    "save_dir": "./widget/Icon",
     "generate_mode": "all-in-one",
     "trim_icon_prefix": "icon",
     "default_icon_size": 18,

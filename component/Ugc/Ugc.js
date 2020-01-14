@@ -11,7 +11,6 @@ export default function Home(props) {
   }, [])
   return (
     <View style={s.container}>
-      <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={s.title}> UGC </Text>
       <ListView data={post} push={props.navigation.navigate}/>
     </View>

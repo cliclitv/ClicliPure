@@ -7,6 +7,7 @@ import Home from './component/Home/Home'
 import Detail from './component/Detail/Detail'
 import Anime from './component/Anime/Anime'
 import Ugc from './component/Ugc/Ugc'
+import Search from './component/Search/Search'
 import Me from './component/Me/Me'
 import { $theme } from './asset/js/const'
 
@@ -34,45 +35,26 @@ const AnimeStack = createStackNavigator(
 const UgcStack = createStackNavigator(
   {
     Ugc: { screen: Ugc },
-    Detail: { screen: Detail, headerMode: 'screen' }
-  },
-  stackProps
-)
-
-
-const HomeStack = createStackNavigator(
-  {
-    Home: { screen: Home },
     Detail: { screen: Detail }
   },
   stackProps
 )
 
-HomeStack.navigationOptions = ({ navigation }) => {
-  let tabBarVisible = true
-  if (navigation.state.index > 0) tabBarVisible = false
-  return { tabBarVisible }
-}
-
-UgcStack.navigationOptions = ({ navigation }) => {
-  let tabBarVisible = true
-  if (navigation.state.index > 0) tabBarVisible = false
-  return { tabBarVisible }
-}
-
-AnimeStack.navigationOptions = ({ navigation }) => {
-  let tabBarVisible = true
-  if (navigation.state.index > 0) tabBarVisible = false
-  return { tabBarVisible }
-}
+const HomeStack = createStackNavigator(
+  {
+    Home: { screen: Home },
+    Detail: { screen: Detail },
+    Search: { screen: Search }
+  },
+  stackProps
+)
 
 export default createAppContainer(
   createBottomTabNavigator(
     {
       Home: { screen: HomeStack },
       Anime: { screen: AnimeStack },
-      Ugc: { screen: UgcStack },
-      Me: { screen: Me }
+      Ugc: { screen: UgcStack }
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -98,3 +80,21 @@ export default createAppContainer(
     }
   )
 )
+
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
+
+UgcStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
+
+AnimeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
