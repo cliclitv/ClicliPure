@@ -147,6 +147,9 @@ function MineScreen() {
 }
 
 const Tab = createBottomTabNavigator()
+const option = ({ route }) => {
+  return { tabBarVisible: route.state && route.state.index > 0 ? false : true }
+}
 
 export default function App() {
   return (
@@ -172,16 +175,10 @@ export default function App() {
           }
         }}
       >
-        <Tab.Screen
-          name='Home'
-          component={HomeScreen}
-          options={({ route }) => {
-            return { tabBarVisible: route.state && route.state.index > 0 ? false : true }
-          }}
-        />
-        <Tab.Screen name='Anime' component={AnimeScreen} />
-        <Tab.Screen name='Ugc' component={UgcScreen} />
-        <Tab.Screen name='Mine' component={MineScreen} />
+        <Tab.Screen name='Home' component={HomeScreen} options={option} />
+        <Tab.Screen name='Anime' component={AnimeScreen} options={option} />
+        <Tab.Screen name='Ugc' component={UgcScreen} options={option} />
+        <Tab.Screen name='Mine' component={MineScreen} options={option} />
       </Tab.Navigator>
     </NavigationNativeContainer>
   )

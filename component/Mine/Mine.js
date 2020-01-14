@@ -15,10 +15,7 @@ export default function Mine(props) {
     ['版本更新', 'v0.0.1']
   ]
   useEffect(() => {
-    navigation.addListener('focus', () => alert('Screen was focused'))
-    // props.navigation.addListener('focus', () => {
-    //   login()
-    // })
+    return props.navigation.addListener('focus', () => login())
   })
   function login() {
     AsyncStorage.getItem('user').then(res => {

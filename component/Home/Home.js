@@ -12,9 +12,6 @@ export default function Home(props) {
     const p = tab ? getPost('', '推荐', 1, 10) : getPost('bgm', '', 1, 10)
     p.then(res => setPost(res.posts))
   }, [tab])
-  function push(gv) {
-    props.navigation.navigate('Detail', { gv })
-  }
   return (
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' animated={true} />
@@ -29,7 +26,7 @@ export default function Home(props) {
         </Text>
       </Text>
       <Icon name={'search'} size={24} color={$theme} style={s.search} onPress={() => props.navigation.navigate('Search')} />
-      <ListView data={post} push={push} />
+      <ListView data={post} push={props.navigation.navigate} />
     </View>
   )
 }

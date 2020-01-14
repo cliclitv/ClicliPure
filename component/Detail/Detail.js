@@ -3,13 +3,14 @@ import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity 
 import Player from '../../widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
-import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
+import { getPostDetail, getVideoList, getPlayUrl, getPv } from '../../asset/js/get'
 
 export default function Detail(props) {
   const gv = props.route.params.gv
   const [post, setPost] = useState(null)
   const [video, setVideo] = useState(null)
   const [content, setContent] = useState(null)
+  const [pv, setPv] = useState(0)
   const [type, setType] = useState('mp4')
   useEffect(() => {
     getPostDetail(gv).then(res => setPost(res.result))
@@ -18,6 +19,9 @@ export default function Detail(props) {
       setVideo(res.videos)
     })
   }, [])
+  useEffect(() => {
+    getPv(gv).then(res => setPv(res.pv))
+  }, [content])
   const select = url => {
     getPlayUrl(url).then(res => {
       setContent(res.url)
@@ -29,7 +33,7 @@ export default function Detail(props) {
       <View style={s.container}>
         <StatusBar barStyle={'dark-content'} hidden={true} backgroundColor='transparent' animated={true} />
         <View style={{ backgroundColor: '#000' }}>
-          <Player url={content} type={type} back={props.navigation.goBack}/>
+          <Player url={content} type={type} back={props.navigation.goBack} />
         </View>
         <View style={s.tab}>
           <View style={s.item}>
@@ -46,7 +50,8 @@ export default function Detail(props) {
           </Text>
           <View style={s.user}>
             <Image source={{ uri: getAvatar(post.uqq) }} style={s.avatar} />
-            <Text style={s.name}>{post.uname}</Text>
+            <Text style={s.name}>{post.uname} </Text>
+            <Text style={s.pv}> {pv} ℃</Text>
           </View>
           <View style={s.list}>
             {video &&
@@ -116,7 +121,8 @@ const s = StyleSheet.create({
   user: {
     flex: 1,
     flexDirection: 'row',
-    paddingLeft: 20
+    paddingLeft: 20,
+    alignItems: 'center'
   },
   card: {
     padding: 10,
@@ -146,5 +152,9 @@ const s = StyleSheet.create({
     top: 20,
     zIndex: 999,
     left: 20
+  },
+  pv: {
+    color: $theme,
+    fontSize: 14
   }
 })

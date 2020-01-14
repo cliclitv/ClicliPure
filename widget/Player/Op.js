@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
-import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight, BackHandler } from 'react-native'
 import { Video } from 'expo-av'
 import { ScreenOrientation } from 'expo'
 import Icon from './Icon'
@@ -24,6 +24,12 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
     })
     return () => v.current.unloadAsync()
   }, [url])
+  useEffect(() => {
+    return () => {
+      v.current.unloadAsync()
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
+    }
+  }, [])
 
   const play = useCallback(() => {
     isPlay ? v.current.pauseAsync() : v.current.playAsync()
@@ -79,16 +85,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
           <Text style={s.text}>{timefy(duration)}</Text>
           <Icon name={'full'} size={20} color={'#fff'} onPress={full} style={s.icon} />
         </View>
-        <Video
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode='contain'
-          shouldPlay
-          style={s.video}
-          ref={v}
-          onPlaybackStatusUpdate={update}
-        />
+        <Video rate={1.0} volume={1.0} isMuted={false} resizeMode='contain' shouldPlay style={s.video} ref={v} onPlaybackStatusUpdate={update} />
       </View>
     </TouchableHighlight>
   )
