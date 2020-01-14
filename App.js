@@ -91,37 +91,24 @@ import { $theme } from './asset/js/const'
 //   )
 // )
 
-// HomeStack.navigationOptions = ({ navigation }) => {
-//   let tabBarVisible = true
-//   if (navigation.state.index > 0) tabBarVisible = false
-//   return { tabBarVisible }
-// }
-
-// UgcStack.navigationOptions = ({ navigation }) => {
-//   let tabBarVisible = true
-//   if (navigation.state.index > 0) tabBarVisible = false
-//   return { tabBarVisible }
-// }
-
-// AnimeStack.navigationOptions = ({ navigation }) => {
-//   let tabBarVisible = true
-//   if (navigation.state.index > 0) tabBarVisible = false
-//   return { tabBarVisible }
-// }
-
 // MineStack.navigationOptions = ({ navigation }) => {
 //   let tabBarVisible = true
 //   if (navigation.state.index > 0) tabBarVisible = false
 //   return { tabBarVisible }
 // }
 
+const stackProps = {
+  headerMode: 'none'
+}
+
 const HomeStack = createStackNavigator()
 
 function HomeScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator {...stackProps}>
       <HomeStack.Screen name='Home' component={Home} />
-      <HomeStack.Screen name='Details' component={Detail} />
+      <HomeStack.Screen name='Detail' component={Detail} />
+      <HomeStack.Screen name='Search' component={Search} />
     </HomeStack.Navigator>
   )
 }
@@ -130,9 +117,9 @@ const AnimeStack = createStackNavigator()
 
 function AnimeScreen() {
   return (
-    <AnimeStack.Navigator>
+    <AnimeStack.Navigator {...stackProps}>
       <AnimeStack.Screen name='Anime' component={Anime} />
-      <AnimeStack.Screen name='Details' component={Detail} />
+      <AnimeStack.Screen name='Detail' component={Detail} />
     </AnimeStack.Navigator>
   )
 }
@@ -141,9 +128,9 @@ const UgcStack = createStackNavigator()
 
 function UgcScreen() {
   return (
-    <UgcStack.Navigator>
+    <UgcStack.Navigator {...stackProps}>
       <UgcStack.Screen name='Ugc' component={Ugc} />
-      <UgcStack.Screen name='Details' component={Detail} />
+      <UgcStack.Screen name='Detail' component={Detail} />
     </UgcStack.Navigator>
   )
 }
@@ -152,19 +139,18 @@ const MineStack = createStackNavigator()
 
 function MineScreen() {
   return (
-    <MineStack.Navigator>
+    <MineStack.Navigator {...stackProps}>
       <MineStack.Screen name='Mine' component={Mine} />
       <MineStack.Screen name='Login' component={Login} />
     </MineStack.Navigator>
   )
 }
 
-
 const Tab = createBottomTabNavigator()
 
 export default function App() {
   return (
-    <NavigationNativeContainer>
+    <NavigationNativeContainer options={{ headerShown: false }}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color }) => {
@@ -178,15 +164,32 @@ export default function App() {
           }
         })}
         tabBarOptions={{
+          showLabel: false,
           activeTintColor: $theme,
-          inactiveTintColor: '#c8cfdd'
+          inactiveTintColor: '#c8cfdd',
+          style: {
+            borderTopColor: '#fff'
+          }
         }}
       >
-        <Tab.Screen name='Home' component={Home} />
-        <Tab.Screen name='Anime' component={Anime} />
-        <Tab.Screen name='Ugc' component={Ugc} />
-        <Tab.Screen name='Mine' component={Mine} />
+        <Tab.Screen
+          name='Home'
+          component={HomeScreen}
+          options={({ route }) => {
+            return { tabBarVisible: route.state && route.state.index > 0 ? false : true }
+          }}
+        />
+        <Tab.Screen name='Anime' component={AnimeScreen} />
+        <Tab.Screen name='Ugc' component={UgcScreen} />
+        <Tab.Screen name='Mine' component={MineScreen} />
       </Tab.Navigator>
     </NavigationNativeContainer>
   )
 }
+
+// ({ route }) => {
+//   console.log(route.state)
+//   return {
+//     tabBarVisible: route.state.index > 0 ? false : true
+//   }
+// }

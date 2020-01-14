@@ -6,7 +6,7 @@ import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList, getPlayUrl } from '../../asset/js/get'
 
 export default function Detail(props) {
-  const gv = props.navigation.getParam('gv')
+  const gv = props.route.params.gv
   const [post, setPost] = useState(null)
   const [video, setVideo] = useState(null)
   const [content, setContent] = useState(null)

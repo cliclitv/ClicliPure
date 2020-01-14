@@ -5,7 +5,7 @@ import { getSuo } from '../../asset/js/util'
 export default function ListView({ data, section, push }) {
   const item = ({ item }) => (
     <View style={s.wrap}>
-      <TouchableOpacity style={s.item} onPress={() => push('Detail', { gv: item.id })}>
+      <TouchableOpacity style={s.item} onPress={() => push(item.id)}>
         <Image source={{ uri: getSuo(item.content) }} style={s.cover}/>
         <Text style={s.title}>{item.title}</Text>
         <Text style={s.time}>{item.time}</Text>
