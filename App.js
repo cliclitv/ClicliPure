@@ -49,12 +49,20 @@ const HomeStack = createStackNavigator(
   stackProps
 )
 
+const MeStack = createStackNavigator(
+  {
+    Login: { screen: Login }
+  },
+  stackProps
+)
+
 export default createAppContainer(
   createBottomTabNavigator(
     {
       Home: { screen: HomeStack },
       Anime: { screen: AnimeStack },
-      Ugc: { screen: UgcStack }
+      Ugc: { screen: UgcStack },
+      Me: { screen: MeStack }
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -94,6 +102,12 @@ UgcStack.navigationOptions = ({ navigation }) => {
 }
 
 AnimeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true
+  if (navigation.state.index > 0) tabBarVisible = false
+  return { tabBarVisible }
+}
+
+MeStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true
   if (navigation.state.index > 0) tabBarVisible = false
   return { tabBarVisible }
