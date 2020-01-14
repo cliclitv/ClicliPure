@@ -18,10 +18,11 @@ export default function Search(props) {
         <Icon name={'back'} size={24} color={$theme} style={s.back} onPress={() => props.navigation.goBack()} />
         <TextInput
           style={s.search}
+          selectionColor={$theme}
           underlineColorAndroid='transparent'
           maxLength={20}
           placeholder={'搜索一下下菊花又不会坏(⊙o⊙)…'}
-          placeholderTextColor={$theme}
+          placeholderTextColor='rgba(148,108,230,.5)'
           onChangeText={change}
         ></TextInput>
       </View>
@@ -54,7 +55,7 @@ const s = StyleSheet.create({
   search: {
     flex: 1,
     backgroundColor: 'rgba(148,108,230,.1)',
-    borderRadius: 5,
+    borderRadius: 30,
     padding: 10,
     paddingLeft: 20,
     color: $theme
