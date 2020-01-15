@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Image, View, StyleSheet, TextInput, TouchableOpacity, Text, AsyncStorage } from 'react-native'
 import { $theme } from '../../asset/js/const'
 import { postLogin, postSignup } from '../../asset/js/post'
+import TopTip from '../../widget/TopTip/TopTip'
 
 export default function Mine(props) {
   const [name, setName] = useState('')
   const [pwd, setPwd] = useState('')
   const [qq, setQQ] = useState(0)
+  const [tip, setTip] = useState(false)
   let timer = null
   const img = 'http://p3.so.qhimgs1.com/t02ee608edd64a69d7a.jpg'
   function changeName(text) {
@@ -25,7 +27,8 @@ export default function Mine(props) {
     postLogin({ name, pwd }).then(res => {
       AsyncStorage.setItem('token', JSON.stringify(res.token)).then(() => {
         AsyncStorage.setItem('user', JSON.stringify(res.user)).then(() => {
-          props.navigation.goBack()
+          setTip(true)
+          setTimeout(() => props.navigation.goBack(), 1000)
         })
       })
     })
@@ -33,10 +36,12 @@ export default function Mine(props) {
   function signup() {
     postSignup({ name, pwd, qq }).then(res => {
       setQQ(0)
+      setTip(true)
     })
   }
   return (
     <View style={s.container}>
+      {tip ? <TopTip bg={$theme} text={'成功啦'} /> : null}
       <Image source={{ uri: img }} style={s.avatar} />
       {qq ? (
         <TextInput
