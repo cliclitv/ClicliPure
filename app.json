@@ -10,7 +10,7 @@
     "icon": "./asset/img/icon.png",
     "splash": {
       "image": "./asset/img/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#946ce6"
     },
     "updates": {
@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "tv.clicli.yisar"
+      "package": "tv.clicli.yse"
     },
     "androidStatusBar": {
       "backgroundColor": "#fff"
