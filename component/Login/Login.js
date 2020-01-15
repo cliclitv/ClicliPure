@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import { Image, View, StyleSheet, TextInput, TouchableOpacity, Text, AsyncStorage } from 'react-native'
 import { $theme } from '../../asset/js/const'
-import { postLogin } from '../../asset/js/post'
+import { postLogin, postSignup } from '../../asset/js/post'
 
 export default function Mine(props) {
   const [name, setName] = useState('')
   const [pwd, setPwd] = useState('')
-  let $1 = null
-  let $2 = null
+  const [qq, setQQ] = useState(0)
+  let timer = null
   const img = 'http://p3.so.qhimgs1.com/t02ee608edd64a69d7a.jpg'
   function changeName(text) {
-    clearTimeout($1)
-    $1 = setTimeout(() => setName(text), 500)
+    clearTimeout(timer)
+    timer = setTimeout(() => setName(text), 500)
   }
   function changePwd(text) {
-    clearTimeout($2)
-    $2 = setTimeout(() => setPwd(text), 500)
+    clearTimeout(timer)
+    timer = setTimeout(() => setPwd(text), 500)
+  }
+  function changeQQ(text) {
+    clearTimeout(timer)
+    timer = setTimeout(() => setQQ(text), 500)
   }
   function login() {
     postLogin({ name, pwd }).then(res => {
@@ -26,9 +30,25 @@ export default function Mine(props) {
       })
     })
   }
+  function signup() {
+    postSignup({ name, pwd, qq }).then(res => {
+      setQQ(0)
+    })
+  }
   return (
     <View style={s.container}>
       <Image source={{ uri: img }} style={s.avatar} />
+      {qq ? (
+        <TextInput
+          style={s.item}
+          selectionColor={$theme}
+          underlineColorAndroid='transparent'
+          maxLength={20}
+          placeholder={'qq或邮箱'}
+          placeholderTextColor={'rgba(148,108,230,.5)'}
+          onChangeText={changeQQ}
+        ></TextInput>
+      ) : null}
       <TextInput
         style={s.item}
         selectionColor={$theme}
@@ -47,8 +67,17 @@ export default function Mine(props) {
         placeholderTextColor={'rgba(148,108,230,.5)'}
         onChangeText={changePwd}
       ></TextInput>
-      <TouchableOpacity style={s.login} onPress={login}>
-        <Text style={s.text}>登录</Text>
+      {qq ? (
+        <TouchableOpacity style={s.login} onPress={signup}>
+          <Text style={s.text}>注册</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={s.login} onPress={login}>
+          <Text style={s.text}>登陆</Text>
+        </TouchableOpacity>
+      )}
+      <TouchableOpacity onPress={() => changeQQ(1)}>
+        <Text style={s.a}>{qq ? '登录 >' : '注册 >'}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -61,6 +90,11 @@ const s = StyleSheet.create({
     color: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  modal: {
+    height: 40,
+    width: 100,
+    backgroundColor: $theme
   },
   item: {
     backgroundColor: 'rgba(148,108,230,.1)',
@@ -89,5 +123,8 @@ const s = StyleSheet.create({
     width: 100,
     borderRadius: 50,
     marginBottom: 20
+  },
+  a: {
+    color: $theme
   }
 })
