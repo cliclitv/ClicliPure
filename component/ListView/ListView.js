@@ -3,10 +3,10 @@ import { Image, FlatList, StyleSheet, Text, View, SectionList, TouchableOpacity,
 import { getSuo } from '../../asset/js/util'
 import { $theme } from '../../asset/js/const'
 
-export default function ListView({ data, section, push, end }) {
+export default function ListView({ data, section, push, end, flag }) {
   const loading = <ActivityIndicator color={$theme} size={30} style={{ margin: 20 }}></ActivityIndicator>
 
-  if (!data && !section) return loading
+  if (!data && !section && !flag) return loading
   const item = ({ item }) => (
     <View style={s.wrap}>
       <TouchableOpacity style={s.item} onPress={() => push('Detail', { gv: item.id })}>
@@ -53,7 +53,7 @@ export default function ListView({ data, section, push, end }) {
       key={{}}
       onEndReachedThreshold={1}
       onEndReached={end}
-      ListFooterComponent={() => loading}
+      ListFooterComponent={() => !flag && loading}
     />
   )
 }

@@ -26,7 +26,7 @@ export default function Search(props) {
           onChangeText={change}
         ></TextInput>
       </View>
-      <ListView data={post} push={props.navigation.navigate} />
+      <ListView data={post} push={props.navigation.navigate} flag={true} />
     </View>
   )
 }
