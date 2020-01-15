@@ -37,6 +37,7 @@ export default function Mine(props) {
     postSignup({ name, pwd, qq }).then(res => {
       setQQ(0)
       setTip(true)
+      setTimeout(() => setTip(false), 3000)
     })
   }
   return (
