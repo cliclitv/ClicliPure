@@ -8,8 +8,9 @@ let page = 1
 export default function Home(props) {
   const [tab, setTab] = useState(true)
   const [post, setPost] = useState([])
-  
+
   useEffect(() => {
+    page = 1
     const p = tab ? getPost('', '推荐', page, 10) : getPost('bgm', '', page, 10)
     p.then(res => setPost(res.posts))
   }, [tab])
