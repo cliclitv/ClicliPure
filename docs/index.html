@@ -27,9 +27,10 @@
         width: 900px;
         margin: 0 auto;
         display: flex;
+        align-items: center;
+        justify-content: flex-start;
       }
       .left {
-        width: 200px;
         transition: 0.5s;
       }
 
@@ -56,7 +57,7 @@
         margin-top: 50px;
       }
       .link {
-        margin-top: 50px;
+        margin-top: 30px;
       }
       .link a {
         display: block;
@@ -66,8 +67,7 @@
       }
       .link li {
         text-align: center;
-        width: 180px;
-        padding: 15px;
+        padding: 15px 30px;
         background: rgba(148, 108, 230, 0.2);
         display: inline-block;
         margin: 20px auto;
@@ -82,6 +82,13 @@
 
       .old {
         font-size: 14px;
+      }
+
+      .qcode,
+      .qcode img {
+        width: 180px;
+        margin: 20px auto;
+        border-radius: 5px;
       }
 
       @media screen and (max-width: 500px) {
@@ -109,6 +116,7 @@
             历史版本下载
           </a>
         </ul>
+        <div class="qcode"><img src="https://ae01.alicdn.com/kf/He96d7ee3e3f340f7a2a628aae51f612aV.png" alt="clicli" /></div>
       </div>
     </div>
   </body>
