@@ -4552,6 +4552,11 @@ react-native-iconfont-cli@^1.6.3:
     tslib "^1.10.0"
     xml2js "^0.4.19"
 
+react-native-idle@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/react-native-idle/download/react-native-idle-1.1.0.tgz#9a6ac1b7e085d484d51db331df087711931463a9"
+  integrity sha1-mmrBt+CF1ITVHbMx3wh3EZMUY6k=
+
 react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npm.taobao.org/react-native-iphone-x-helper/download/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"

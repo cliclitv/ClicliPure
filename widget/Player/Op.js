@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight, BackHan
 import { Video } from 'expo-av'
 import { ScreenOrientation } from 'expo'
 import Icon from './Icon'
+import RNIdle from 'react-native-idle'
 const { width, height } = Dimensions.get('window')
 const autoHeight = (width * 9) / 16
 
@@ -25,8 +26,10 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
     return () => v.current.unloadAsync()
   }, [url])
   useEffect(() => {
+    RNIdle.disableIdleTimer()
     return () => {
       v.current.unloadAsync()
+      RNIdle.enableIdleTimer() 
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
     }
   }, [])
