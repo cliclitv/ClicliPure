@@ -1,4 +1,36 @@
 {
+<<<<<<< HEAD
   "name": "ClicliPure",
   "displayName": "ClicliPure"
 }
+=======
+  "expo": {
+    "name": "clicli",
+    "slug": "clicli",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./asset/img/icon.png",
+    "splash": {
+      "image": "./asset/img/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#946ce6"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "tv.clicli.yse"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#fff"
+    }
+  }
+}
+>>>>>>> dcb16171baba251a34cbeb23bfe513dc641ddee5

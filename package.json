@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "ClicliPure",
   "version": "0.0.1",
   "private": true,
@@ -11,10 +12,25 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
+=======
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "build": "expo build:android",
+    "install-expo": "expo install react-native-svg"
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.5",
+>>>>>>> dcb16171baba251a34cbeb23bfe513dc641ddee5
     "@react-navigation/bottom-tabs": "^5.0.0-alpha.34",
     "@react-navigation/native": "^5.0.0-alpha.27",
     "@react-navigation/stack": "^5.0.0-alpha.58",
     "blueimp-md5": "^2.12.0",
+<<<<<<< HEAD
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.5.3",
@@ -38,4 +54,26 @@
   "jest": {
     "preset": "react-native"
   }
+=======
+    "expo": "^36.0.2",
+    "expo-av": "^8.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-idle": "^1.1.0",
+    "react-native-reanimated": "~1.4.0",
+    "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-svg": "9.13.3",
+    "react-native-web": "~0.11.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0",
+    "react-native-cli": "^2.0.1",
+    "react-native-iconfont-cli": "^1.6.3"
+  },
+  "private": true
+>>>>>>> dcb16171baba251a34cbeb23bfe513dc641ddee5
 }
