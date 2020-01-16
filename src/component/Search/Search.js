@@ -3,7 +3,7 @@ import { View, StyleSheet, TextInput } from 'react-native'
 import { getSearch } from '../../asset/js/get'
 import { $theme } from '../../asset/js/const'
 import ListView from '../ListView/ListView'
-import Icon from '../../widget/Icon/Icon'
+import Icon from '../../src/widget/Icon/Icon'
 
 export default function Search(props) {
   let timer = null

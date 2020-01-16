@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, AsyncStorage } from 'react-native'
-import Icon from '../../widget/Icon/Icon'
+import Icon from '../../src/widget/Icon/Icon'
 import { getAvatar } from '../../asset/js/util'
 import { $theme } from '../../asset/js/const'
 

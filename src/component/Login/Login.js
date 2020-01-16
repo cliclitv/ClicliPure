@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Image, View, StyleSheet, TextInput, TouchableOpacity, Text, AsyncStorage } from 'react-native'
 import { $theme } from '../../asset/js/const'
 import { postLogin, postSignup } from '../../asset/js/post'
-import TopTip from '../../widget/TopTip/TopTip'
+import TopTip from '../../src/widget/TopTip/TopTip'
 
 export default function Mine(props) {
   const [name, setName] = useState('')

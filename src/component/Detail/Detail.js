@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View, StatusBar, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
-import Player from '../../widget/Player/Player'
+import Player from '../../src/widget/Player/Player'
 import { $theme } from '../../asset/js/const'
 import { getAvatar } from '../../asset/js/util'
 import { getPostDetail, getVideoList, getPlayUrl, getPv } from '../../asset/js/get'
