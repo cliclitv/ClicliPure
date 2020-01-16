@@ -16,7 +16,7 @@ export default function Home(props) {
     6: '周六'
   }
   useEffect(() => {
-    getPost('新番', 'nowait', 1, 100).then(res => {
+    getPost('新番', '', 1, 100, 'nowait').then(res => {
       let ret = []
       for (const k in map) ret.push({ title: map[k], data: [] })
       res.posts.forEach(item => {
@@ -32,7 +32,7 @@ export default function Home(props) {
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={s.title}> 更新表 </Text>
-      <ListView section={post} push={props.navigation.navigate}/>
+      <ListView section={post} push={props.navigation.navigate} />
     </View>
   )
 }
