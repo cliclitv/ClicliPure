@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, StatusBar } from 'react-native'
 import { getPost } from '../../asset/js/get'
 import { $theme } from '../../asset/js/const'
 import ListView from '../ListView/ListView'
-import Icon from '../../src/widget/Icon/Icon'
+import Icon from '../../widget/Icon/Icon'
 let page = 1
 export default function Home(props) {
   const [tab, setTab] = useState(true)
