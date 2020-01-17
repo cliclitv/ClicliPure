@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # OSX
 #
 .DS_Store
@@ -58,20 +57,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-=======
-node_modules/**/*
-.expo/*
-.expo-shared/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-web-report/
-
-# macOS
-.DS_Store
->>>>>>> dcb16171baba251a34cbeb23bfe513dc641ddee5
