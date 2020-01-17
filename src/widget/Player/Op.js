@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
-import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight, BackHandler } from 'react-native'
+import React, { useState, useRef, useEffect, useCallback, memo } from 'react'
+import { StyleSheet, View, Dimensions, Slider, Text, TouchableHighlight, ActivityIndicator } from 'react-native'
 import Video from 'react-native-video'
 import Icon from './Icon'
 import Orientation from 'react-native-orientation'
 const { width, height } = Dimensions.get('window')
 const autoHeight = (width * 9) / 16
 
-export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', callback }) {
-  if (!url) return <View style={s.unfull} />
-
+function Player({ url, themeColor = '#946ce6', type = 'mp4', callback }) {
+  if (!url) return <ActivityIndicator color={themeColor} size={30} style={ s.unfull }></ActivityIndicator>
   let v = useRef(null)
   let timer = null
   const [isPlay, setPlay] = useState(true)
@@ -17,13 +16,6 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
   const [duration, setDuration] = useState(0)
   const [position, setPosition] = useState(0)
 
-  // useEffect(() => {
-  //   v.current.loadAsync({ uri: url }).then(() => {
-  //     v.current.playAsync()
-  //     setPlay(true)
-  //   })
-  //   return () => v.current.unloadAsync()
-  // }, [url])
   useEffect(() => {
     return () => {
       Orientation.lockToPortrait()
@@ -37,7 +29,7 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
     if (isFull) {
       Orientation.lockToPortrait()
     } else {
-      Orientation.lockToLandscapeRight()
+      Orientation.lockToLandscapeLeft()
     }
     setFull(!isFull)
   })
@@ -56,18 +48,16 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
     setPlay(true)
   })
   const show = useCallback(() => {
-    setControl(true)
     clearTimeout(timer)
+    setControl(true)
     timer = setTimeout(() => setControl(false), 5000)
   })
 
-  const c = useMemo(() => {
-    return control ? { opacity: 1 } : { opacity: 0 }
-  })
+  const c = control ? { opacity: 1 } : { opacity: 0 }
   return (
-    <TouchableHighlight onPress={show}>
-      <View style={isFull ? s.full : s.unfull}>
-        <Icon name={'back'} size={20} color={'#fff'} onPress={back} style={{ ...c, ...s.back }} />
+    <View style={isFull ? s.full : s.unfull}>
+      <Icon name={'back'} size={20} color={'#fff'} onPress={back} style={{ ...c, ...s.back }} />
+      <TouchableHighlight onPress={show} style={s.mark}>
         <View style={{ ...c, ...s.control }}>
           <Icon name={isPlay ? 'pause' : 'play'} size={20} color={'#fff'} onPress={play} style={s.icon} />
           <Text style={s.text}>{timefy(position)}</Text>
@@ -85,22 +75,26 @@ export default function OPlayer({ url, themeColor = '#946ce6', type = 'mp4', cal
           <Text style={s.text}>{timefy(duration)}</Text>
           <Icon name={'full'} size={20} color={'#fff'} onPress={full} style={s.icon} />
         </View>
-        <Video
-          source={{ uri: url }}
-          style={isFull ? s.full : s.unfull}
-          ref={v}
-          onLoad={load}
-          onProgress={progress}
-          paused={!isPlay}
-          resizeMode={'contain'}
-          progressUpdateInterval={250.0}
-          playWhenInactive={false}
-          playInBackground={false}
-        />
-      </View>
-    </TouchableHighlight>
+      </TouchableHighlight>
+
+      <Video
+        source={{ uri: url }}
+        style={isFull ? s.full : s.unfull}
+        ref={v}
+        onLoad={load}
+        onProgress={progress}
+        paused={!isPlay}
+        resizeMode={'contain'}
+        progressUpdateInterval={250.0}
+        playWhenInactive={true}
+        playInBackground={false}
+        onPress={() => {}}
+      />
+    </View>
   )
 }
+
+export default memo(Player)
 
 const timefy = time => {
   if (!time) return '00:00'
@@ -117,6 +111,14 @@ const s = StyleSheet.create({
   video: {
     width: '100%',
     height: '100%'
+  },
+  mark: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 999
   },
   control: {
     position: 'absolute',
