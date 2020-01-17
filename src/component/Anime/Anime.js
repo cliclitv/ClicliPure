@@ -5,7 +5,7 @@ import { $theme } from '../../asset/js/const'
 import ListView from '../ListView/ListView'
 
 export default function Home(props) {
-  const [post, setPost] = useState([])
+  const [post, setPost] = useState(null)
   const map = {
     0: '周日',
     1: '周一',
@@ -20,8 +20,7 @@ export default function Home(props) {
       let ret = []
       for (const k in map) ret.push({ title: map[k], data: [] })
       res.posts.forEach(item => {
-        const time = item.time.replace(/\-/g, '/')
-        let day = new Date(time).getDay().toString()
+        let day = new Date(item.time).getDay().toString()
         let data = ret[day].data
         data.push(item)
       })
@@ -32,7 +31,7 @@ export default function Home(props) {
     <View style={s.container}>
       <StatusBar barStyle={'dark-content'} translucent={true} backgroundColor='transparent' />
       <Text style={s.title}> 更新表 </Text>
-      <ListView section={post} push={props.navigation.navigate} />
+      <ListView section={post} push={props.navigation.navigate} flag={false}/>
     </View>
   )
 }
