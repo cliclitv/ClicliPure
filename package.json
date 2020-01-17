@@ -5,7 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start"
+    "start": "react-native start",
+    "build": "cd ./android && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
