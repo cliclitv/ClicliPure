@@ -1,6 +1,6 @@
 # Clicli Pure
 
-> clicli APP 纯白，维护周期长，功能纯净
+> 已停更，转移到 flutter 版本：[clicli-dark](https://github.com/cliclitv/clicli-dark)
 
 ### Awesome
 
